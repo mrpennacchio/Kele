@@ -16,8 +16,6 @@ include HTTParty
     if @auth_token.nil? || response.nil?
       raise Error, "Unable to access user. Please try again with valid user information."
     end
- 
-
   end
 
   def get_me
@@ -25,5 +23,9 @@ include HTTParty
     JSON.parse(response.body)
   end
 
+  def get_mentor_availability(mentor_id)
+    response = self.class.get("https://www.bloc.io/api/v1/mentors/#{mentor_id}/student_availability", headers: { "authorization": @auth_token })
+    JSON.parse(response.body)
+  end
 
 end
