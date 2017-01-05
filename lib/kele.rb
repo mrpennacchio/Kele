@@ -14,6 +14,6 @@ include HTTParty
     if @auth_token.nil? || response.nil?
       raise Error, "Unable to access user. Please try again with valid user information."
     end
-
+ 
   end
 end
