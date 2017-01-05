@@ -1,4 +1,6 @@
 require 'httparty'
+require 'json'
+
 
 class Kele
 
@@ -15,5 +17,13 @@ include HTTParty
       raise Error, "Unable to access user. Please try again with valid user information."
     end
  
+
   end
+
+  def get_me
+    response = self.class.get('https://www.bloc.io/api/v1/users/me', headers: { "authorization": @auth_token })
+    JSON.parse(response.body)
+  end
+
+
 end
