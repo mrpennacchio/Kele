@@ -1,10 +1,11 @@
 require 'httparty'
 require 'json'
+require_relative './roadmap'
 
 
 class Kele
 
-include HTTParty
+include HTTParty, Roadmap
 
   def initialize(email, password)
     @email = email
